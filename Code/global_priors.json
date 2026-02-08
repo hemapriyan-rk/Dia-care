@@ -1,0 +1,16 @@
+{
+    "sensitivity_weights": {
+        "activity": 0.3624822695035461,
+        "demographic": 0.12386524822695036,
+        "medication": 0.1870567375886525,
+        "sleep": 0.32659574468085106
+    },
+    "alpha_max": 0.03,
+    "lambda_decay": 0.02,
+    "sigma_min": {
+        "sleep": 10,
+        "medication": 5,
+        "activity": 15
+    },
+    "note": "Derived from glucose_proxy_daily (non-clinical)"
+}
