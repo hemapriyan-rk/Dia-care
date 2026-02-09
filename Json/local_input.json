@@ -1,0 +1,12 @@
+{
+  "user_id": "U_001",
+  "behavioral_date": "2026-02-15",
+
+  "sleep_midpoint_min": 72,
+  "sleep_duration_min": 475,
+
+  "mean_med_time_min": 860,
+  "dose_count": 2,
+
+  "activity_load": 180.0
+}

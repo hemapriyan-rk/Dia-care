@@ -1,0 +1,18 @@
+{
+    "days_observed": 13,
+    "baseline": {
+        "sleep_midpoint_min": 60.239999999999995,
+        "sleep_duration_min": 479.9,
+        "mean_med_time_min": 855.1,
+        "activity_load": 184.89999999999998
+    },
+    "cumulative_deviation": 1.0083888888888888,
+    "history": [
+        {
+            "sleep_midpoint_min": 72,
+            "sleep_duration_min": 475,
+            "mean_med_time_min": 860,
+            "activity_load": 180.0
+        }
+    ]
+}

@@ -7,9 +7,6 @@ from sklearn.metrics import mean_squared_error
 import joblib
 import json
 
-# ============================================================
-# FIXED PATHS
-# ============================================================
 BASE_DIR = r"E:\Desktop\Hackathon"
 
 DATA_PATH = os.path.join(
@@ -22,9 +19,6 @@ PRIORS_PATH = os.path.join(
     BASE_DIR, "Json", "global_priors.json"
 )
 
-# ============================================================
-# LOAD DATA
-# ============================================================
 xls = pd.ExcelFile(DATA_PATH)
 
 subject  = pd.read_excel(xls, "subject_profile")
@@ -33,9 +27,7 @@ med      = pd.read_excel(xls, "medication_daily")
 activity = pd.read_excel(xls, "activity_daily")
 glucose  = pd.read_excel(xls, "glucose_proxy_daily")
 
-# ============================================================
-# PREPROCESSING
-# ============================================================
+
 subject["sex"] = subject["sex"].map({"M": 1, "F": 0})
 
 sleep["sleep_duration_min"] = (
@@ -53,9 +45,7 @@ activity["activity_load"] = (
     activity["activity_duration_min"] * activity["activity_MET"]
 )
 
-# ============================================================
-# BUILD DAILY MASTER
-# ============================================================
+
 df = (
     sleep
     .merge(subject, on="subject_id")
@@ -66,9 +56,6 @@ df = (
 
 df = df.dropna(subset=["glucose_proxy_deviation_z"])
 
-# ============================================================
-# TRAIN MATRIX
-# ============================================================
 FEATURES = [
     "age", "sex",
     "sleep_midpoint_min", "sleep_duration_min",
@@ -80,9 +67,7 @@ X = df[FEATURES].to_numpy(dtype=float)
 y = df["glucose_proxy_deviation_z"].to_numpy(dtype=float)
 groups = df["subject_id"].to_numpy()
 
-# ============================================================
-# MODEL
-# ============================================================
+
 model = lgb.LGBMRegressor(
     objective="regression",
     n_estimators=600,
@@ -93,9 +78,7 @@ model = lgb.LGBMRegressor(
     random_state=42
 )
 
-# ============================================================
-# CROSS-USER VALIDATION
-# ============================================================
+
 gkf = GroupKFold(n_splits=5)
 rmse = []
 
@@ -108,15 +91,10 @@ for i, (tr, va) in enumerate(gkf.split(X, y, groups)):
 
 print(f"\nMean RMSE: {np.mean(rmse):.4f}")
 
-# ============================================================
-# FINAL TRAIN
-# ============================================================
+
 model.fit(X, y)
 joblib.dump(model, MODEL_PATH)
 
-# ============================================================
-# GLOBAL PRIORS
-# ============================================================
 importances = model.feature_importances_
 weights = importances / importances.sum()
 

@@ -1,0 +1,12 @@
+{
+    "user_id": "U_004",
+    "days_since_account_creation": 62,
+    "weights": {
+        "global": 0.3,
+        "local": 0.7
+    },
+    "global_deviation": 1.0,
+    "local_cumulative_deviation": 1.008,
+    "final_deviation_score": 1.006,
+    "final_deviation": 0
+}
