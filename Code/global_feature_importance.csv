@@ -1,0 +1,10 @@
+feature,importance,weight,class
+age,2817,0.0998936170212766,demographic
+sex,676,0.02397163120567376,demographic
+sleep_midpoint_min,4213,0.1493971631205674,sleep
+sleep_duration_min,4997,0.17719858156028367,sleep
+dose_count,637,0.022588652482269503,medication
+mean_med_time_min,4638,0.16446808510638297,medication
+activity_duration_min,2820,0.1,activity
+activity_MET,3059,0.10847517730496455,activity
+activity_load,4343,0.15400709219858155,activity

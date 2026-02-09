@@ -1,0 +1,16 @@
+{
+    "feature_weights": {
+        "age": 0.0998936170212766,
+        "sex": 0.02397163120567376,
+        "sleep_midpoint_min": 0.1493971631205674,
+        "sleep_duration_min": 0.17719858156028367,
+        "dose_count": 0.022588652482269503,
+        "mean_med_time_min": 0.16446808510638297,
+        "activity_duration_min": 0.1,
+        "activity_MET": 0.10847517730496455,
+        "activity_load": 0.15400709219858155
+    },
+    "alpha_max": 0.03,
+    "lambda_decay": 0.02,
+    "note": "Population-level global priors (non-clinical)"
+}

@@ -1,0 +1,29 @@
+{
+  "sleep_midpoint_min": 1575,
+  "sleep_duration_min": 510,
+  "mean_med_time_min": 840,
+  "activity_load": 42,
+  "baseline": {
+    "sleep_midpoint_min": 360,
+    "sleep_duration_min": 450,
+    "mean_med_time_min": 720,
+    "activity_load": 30
+  },
+  "previous_state": {
+    "days_observed": 0,
+    "cumulative_deviation": "2.489",
+    "baseline": {
+      "id": "1",
+      "user_id": "2",
+      "avg_sleep_hours": "7.5",
+      "avg_activity_score": "65",
+      "med_adherence_pct": "95",
+      "typical_sleep_window": "22:00-06:30",
+      "avg_sleep_midpoint_min": 360,
+      "avg_sleep_duration_min": 450,
+      "avg_activity_met": "5",
+      "avg_activity_duration_min": 30,
+      "created_at": "2026-02-09T07:18:20.320Z"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "user_id": "U_001",
+    "behavioral_date": "2026-02-15",
+    "phase": "active",
+    "daily_deviation": 0.144,
+    "local_cumulative_deviation": 1.008,
+    "local_signal_ready": true
+}

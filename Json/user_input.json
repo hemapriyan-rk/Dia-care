@@ -1,0 +1,13 @@
+{
+  "user_id": "U_004",
+  "age": 46,
+  "sex": null,
+
+  "sleep_midpoint_min": null,
+  "sleep_duration_min": 380,
+
+  "medication_times_min": [480, null, 720, 900],
+
+  "activity_duration_min": null,
+  "activity_MET": null
+}

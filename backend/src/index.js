@@ -8,9 +8,9 @@ import baselineRoutes from "./routes/baseline.js";
 import historyRoutes from "./routes/history.js";
 import dailyLogRoutes from "./routes/dailyLog.js";
 import outputRoutes from "./routes/output.js";
-
-
-
+import accountAgeRoutes from "./routes/accountAge.js";
+import localHistoryRoutes from "./routes/localHistory.js";
+import globalInferenceRoutes from "./routes/globalInference.js";
 
 
 
@@ -20,11 +20,20 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Auth routes
 app.use("/auth", authRoutes);
+
+// Data submission routes
 app.use("/baseline", baselineRoutes);
 app.use("/daily-log", dailyLogRoutes);
 app.use("/output", outputRoutes);
+
+// Data retrieval routes
 app.use("/history", historyRoutes);
+app.use("/account-age", accountAgeRoutes);
+app.use("/local-history", localHistoryRoutes);
+app.use("/global-inference", globalInferenceRoutes);
 
 
 
