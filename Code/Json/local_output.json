@@ -1,8 +1,8 @@
 {
-  "user_id": 0,
-  "behavioral_date": "",
-  "phase": "active",
-  "daily_deviation": 10.695,
-  "local_cumulative_deviation": 31.313,
-  "local_signal_ready": true
+    "user_id": 0,
+    "behavioral_date": "",
+    "phase": "active",
+    "daily_deviation": 0.239,
+    "local_cumulative_deviation": 99.154,
+    "local_signal_ready": true
 }

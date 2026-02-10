@@ -54,13 +54,91 @@ router.post("/login", async (req, res) => {
     });
 
   } catch (err) {
-  console.error("LOGIN ERROR FULL:", err);
-  res.status(500).json({
-    error: "Login failed",
-    message: err.message
-  });
-}
+    console.error("LOGIN ERROR FULL:", err);
+    res.status(500).json({
+      error: "Login failed",
+      message: err.message
+    });
+  }
 
+});
+
+// Register new user
+router.post("/register", async (req, res) => {
+  const { email, password, passwordConfirm } = req.body || {};
+
+  if (!email || !password || !passwordConfirm) {
+    return res.status(400).json({
+      error: "Missing required fields: email, password, passwordConfirm"
+    });
+  }
+
+  if (password !== passwordConfirm) {
+    return res.status(400).json({
+      error: "Passwords do not match"
+    });
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({
+      error: "Password must be at least 6 characters"
+    });
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      error: "Invalid email format"
+    });
+  }
+
+  try {
+    // Check if user already exists
+    const existingUser = await pool.query(
+      "SELECT id FROM users WHERE email = $1",
+      [email]
+    );
+
+    if (existingUser.rows.length > 0) {
+      return res.status(400).json({
+        error: "Email already registered"
+      });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create new user ONLY (no profile or baseline yet)
+    const newUserResult = await pool.query(
+      "INSERT INTO users (email, password_hash, is_active, created_at, last_login) VALUES ($1, $2, $3, NOW(), NOW()) RETURNING id",
+      [email, hashedPassword, true]
+    );
+
+    const userId = newUserResult.rows[0].id;
+
+    // Generate JWT token for frontend to use for profile setup
+    const token = jwt.sign(
+      { user_id: userId },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // Response indicates user needs to complete profile setup
+    res.status(201).json({
+      token,
+      user_id: userId,
+      message: "User created successfully. Please complete your profile.",
+      requires_profile_setup: true
+    });
+
+  } catch (err) {
+    console.error("REGISTER ERROR:", err);
+    res.status(500).json({
+      error: "Registration failed",
+      message: err.message
+    });
+  }
 });
 
 export default router;

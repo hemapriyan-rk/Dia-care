@@ -17,21 +17,34 @@ router.get("/", authMiddleware, async (req, res) => {
       [req.user_id]
     );
 
+    // Default baseline values for new users
+    const defaultBaseline = {
+      avg_sleep_hours: 7.5,
+      avg_activity_score: 50,
+      med_adherence_pct: 80,
+      typical_sleep_window: "22:00-06:00",
+      avg_sleep_midpoint_min: 1380,
+      avg_sleep_duration_min: 480,
+      avg_activity_MET: 1.2,
+      avg_activity_duration_min: 30
+    };
+
     if (result.rows.length === 0) {
-      return res.status(404).json({ message: "Baseline not found. Please complete initial assessment." });
+      // Return defaults for new users instead of 404
+      return res.json(defaultBaseline);
     }
 
     // Convert NUMERIC types to numbers
     const baseline = result.rows[0];
     return res.json({
-      avg_sleep_hours: baseline.avg_sleep_hours ? parseFloat(baseline.avg_sleep_hours) : 0,
-      avg_activity_score: baseline.avg_activity_score ? parseFloat(baseline.avg_activity_score) : 0,
-      med_adherence_pct: baseline.med_adherence_pct ? parseFloat(baseline.med_adherence_pct) : 0,
-      typical_sleep_window: baseline.typical_sleep_window,
-      avg_sleep_midpoint_min: baseline.avg_sleep_midpoint_min ? parseInt(baseline.avg_sleep_midpoint_min) : 0,
-      avg_sleep_duration_min: baseline.avg_sleep_duration_min ? parseInt(baseline.avg_sleep_duration_min) : 0,
-      avg_activity_MET: baseline.avg_activity_MET ? parseFloat(baseline.avg_activity_MET) : 0,
-      avg_activity_duration_min: baseline.avg_activity_duration_min ? parseInt(baseline.avg_activity_duration_min) : 0
+      avg_sleep_hours: baseline.avg_sleep_hours ? parseFloat(baseline.avg_sleep_hours) : defaultBaseline.avg_sleep_hours,
+      avg_activity_score: baseline.avg_activity_score ? parseFloat(baseline.avg_activity_score) : defaultBaseline.avg_activity_score,
+      med_adherence_pct: baseline.med_adherence_pct ? parseFloat(baseline.med_adherence_pct) : defaultBaseline.med_adherence_pct,
+      typical_sleep_window: baseline.typical_sleep_window || defaultBaseline.typical_sleep_window,
+      avg_sleep_midpoint_min: baseline.avg_sleep_midpoint_min ? parseInt(baseline.avg_sleep_midpoint_min) : defaultBaseline.avg_sleep_midpoint_min,
+      avg_sleep_duration_min: baseline.avg_sleep_duration_min ? parseInt(baseline.avg_sleep_duration_min) : defaultBaseline.avg_sleep_duration_min,
+      avg_activity_MET: baseline.avg_activity_MET ? parseFloat(baseline.avg_activity_MET) : defaultBaseline.avg_activity_MET,
+      avg_activity_duration_min: baseline.avg_activity_duration_min ? parseInt(baseline.avg_activity_duration_min) : defaultBaseline.avg_activity_duration_min
     });
   } catch (err) {
     console.error("Baseline fetch error:", err);

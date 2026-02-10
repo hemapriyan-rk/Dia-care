@@ -12,6 +12,27 @@ export interface LoginCredentials {
   password: string;
 }
 
+export interface RegisterCredentials {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
+export interface UserProfile {
+  id: number;
+  user_id: number;
+  full_name: string;
+  age: number;
+  sex: string;
+  created_at: string;
+}
+
+export interface CreateProfileData {
+  full_name: string;
+  age: number;
+  sex: string;
+}
+
 export interface LoginResponse {
   token: string;
   user_id: number;
@@ -105,6 +126,50 @@ export const authApi = {
       body: JSON.stringify(credentials),
     });
     return handleResponse<LoginResponse>(response);
+  },
+
+  register: async (
+    credentials: RegisterCredentials,
+  ): Promise<LoginResponse> => {
+    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+      method: "POST",
+      headers: getHeaders(false),
+      body: JSON.stringify(credentials),
+    });
+    return handleResponse<LoginResponse>(response);
+  },
+};
+
+// User Profile endpoints
+export const profileApi = {
+  create: async (
+    profileData: CreateProfileData,
+  ): Promise<{ message: string; profile: UserProfile }> => {
+    const response = await fetch(`${API_BASE_URL}/user-profiles`, {
+      method: "POST",
+      headers: getHeaders(true),
+      body: JSON.stringify(profileData),
+    });
+    return handleResponse<{ message: string; profile: UserProfile }>(response);
+  },
+
+  get: async (): Promise<{ profile: UserProfile }> => {
+    const response = await fetch(`${API_BASE_URL}/user-profiles`, {
+      method: "GET",
+      headers: getHeaders(true),
+    });
+    return handleResponse<{ profile: UserProfile }>(response);
+  },
+
+  update: async (
+    profileData: CreateProfileData,
+  ): Promise<{ message: string; profile: UserProfile }> => {
+    const response = await fetch(`${API_BASE_URL}/user-profiles`, {
+      method: "PUT",
+      headers: getHeaders(true),
+      body: JSON.stringify(profileData),
+    });
+    return handleResponse<{ message: string; profile: UserProfile }>(response);
   },
 };
 

@@ -4,6 +4,7 @@ import { LoginPage } from "./components/LoginPage";
 import { DashboardPage } from "./components/DashboardPage";
 import { DailyEntryPage } from "./components/DailyEntryPage";
 import { HistoryPage } from "./components/HistoryPage";
+import ProfileSetupPage from "./components/ProfileSetupPage";
 import { Navigation } from "./components/Navigation";
 import { AuthProvider } from "../contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -24,6 +25,14 @@ export default function App() {
         <Toaster position="top-center" richColors />
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route
+            path="/profile-setup"
+            element={
+              <ProtectedRoute>
+                <ProfileSetupPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={

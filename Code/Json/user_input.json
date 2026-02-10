@@ -1,11 +1,11 @@
 {
-  "age": 35,
-  "sex": 1,
-  "sleep_midpoint_min": 1575,
-  "sleep_duration_min": 510,
+  "age": 43,
+  "sex": 0,
+  "sleep_midpoint_min": 180,
+  "sleep_duration_min": 480,
   "dose_count": 2,
-  "mean_med_time_min": 840,
-  "activity_duration_min": 12,
-  "activity_MET": 3.5,
-  "activity_load": 42
+  "mean_med_time_min": 780,
+  "activity_duration_min": 60,
+  "activity_MET": 3,
+  "activity_load": 180
 }

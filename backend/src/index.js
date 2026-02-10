@@ -11,6 +11,7 @@ import outputRoutes from "./routes/output.js";
 import accountAgeRoutes from "./routes/accountAge.js";
 import localHistoryRoutes from "./routes/localHistory.js";
 import globalInferenceRoutes from "./routes/globalInference.js";
+import userProfileRoutes from "./routes/userProfiles.js";
 
 
 
@@ -23,6 +24,9 @@ app.use(express.json());
 
 // Auth routes
 app.use("/auth", authRoutes);
+
+// User profile routes (protected)
+app.use("/user-profiles", userProfileRoutes);
 
 // Data submission routes
 app.use("/baseline", baselineRoutes);

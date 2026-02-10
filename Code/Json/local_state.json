@@ -1,12 +1,12 @@
 {
-    "days_observed": 21,
+    "days_observed": 35,
     "baseline": {
-        "sleep_midpoint_min": 60.239999999999995,
-        "sleep_duration_min": 479.9,
-        "mean_med_time_min": 855.1,
-        "activity_load": 184.89999999999998
+        "sleep_midpoint_min": 62.6352,
+        "sleep_duration_min": 479.902,
+        "mean_med_time_min": 853.5980000000001,
+        "activity_load": 184.80199999999996
     },
-    "cumulative_deviation": 31.312711859578265,
+    "cumulative_deviation": 99.15377036479157,
     "history": [
         {
             "sleep_midpoint_min": 72,
@@ -61,6 +61,90 @@
             "sleep_duration_min": 510,
             "mean_med_time_min": 840,
             "activity_load": 42
+        },
+        {
+            "sleep_midpoint_min": 1305,
+            "sleep_duration_min": 1050,
+            "mean_med_time_min": 840,
+            "activity_load": 52.5
+        },
+        {
+            "sleep_midpoint_min": 1275,
+            "sleep_duration_min": 870,
+            "mean_med_time_min": 840,
+            "activity_load": 521.5
+        },
+        {
+            "sleep_midpoint_min": 1575,
+            "sleep_duration_min": 510,
+            "mean_med_time_min": 840,
+            "activity_load": 87.5
+        },
+        {
+            "sleep_midpoint_min": 1575,
+            "sleep_duration_min": 510,
+            "mean_med_time_min": 840,
+            "activity_load": 80.5
+        },
+        {
+            "sleep_midpoint_min": 1575,
+            "sleep_duration_min": 510,
+            "mean_med_time_min": 840,
+            "activity_load": 105
+        },
+        {
+            "sleep_midpoint_min": 1575,
+            "sleep_duration_min": 510,
+            "mean_med_time_min": 840,
+            "activity_load": 220.5
+        },
+        {
+            "sleep_midpoint_min": 1575,
+            "sleep_duration_min": 510,
+            "mean_med_time_min": 1020,
+            "activity_load": 150
+        },
+        {
+            "sleep_midpoint_min": 1277,
+            "sleep_duration_min": 864,
+            "mean_med_time_min": 1200,
+            "activity_load": 80.5
+        },
+        {
+            "sleep_midpoint_min": 1575,
+            "sleep_duration_min": 390,
+            "mean_med_time_min": 840,
+            "activity_load": 105
+        },
+        {
+            "sleep_midpoint_min": 1575,
+            "sleep_duration_min": 510,
+            "mean_med_time_min": 840,
+            "activity_load": 66.5
+        },
+        {
+            "sleep_midpoint_min": 1275,
+            "sleep_duration_min": 1110,
+            "mean_med_time_min": 840,
+            "activity_load": 105
+        },
+        {
+            "sleep_midpoint_min": 1335,
+            "sleep_duration_min": 990,
+            "mean_med_time_min": 840,
+            "activity_load": 29
+        },
+        {
+            "sleep_midpoint_min": 270,
+            "sleep_duration_min": 1680,
+            "mean_med_time_min": 840,
+            "activity_load": 35
+        },
+        {
+            "sleep_midpoint_min": 180,
+            "sleep_duration_min": 480,
+            "mean_med_time_min": 780,
+            "activity_load": 180
         }
     ]
 }
